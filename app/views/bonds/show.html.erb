@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @bond.name %>
+</p>
+
+<p>
+  <strong>Bond Type:</strong>
+  <%= @bond.bond_type %>
+</p>
+
+<p>
+  <strong>Term:</strong>
+  <%= @bond.term %>
+</p>
+
+<p>
+  <strong>Yield:</strong>
+  <%= @bond.yield %>
+</p>
+
+<%= link_to 'Edit', edit_bond_path(@bond) %> |
+<%= link_to 'Back', bonds_path %>

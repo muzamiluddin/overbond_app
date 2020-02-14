@@ -1,0 +1,37 @@
+<%= form_with(model: bond, local: true) do |form| %>
+  <% if bond.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bond.errors.count, "error") %> prohibited this bond from being saved:</h2>
+
+      <ul>
+      <% bond.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :bond_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bond_type %>
+    <%= form.select :bond_type, ['corporate', 'government'], prompt: "Select Bond Type"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :term %>
+    <%= form.text_field :term, id: :bond_term %>
+  </div>
+
+  <div class="field">
+    <%= form.label :yield %>
+    <%= form.text_field :yield, id: :bond_yield %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

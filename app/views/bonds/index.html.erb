@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bonds</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Term</th>
+      <th>Yield</th>
+      <th>Benchmark Bond</th>
+      <th>Spread to Benchmark</th>
+      <th>Government Bond Curve</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bonds.each do |bond| %>
+      <tr>
+        <td><%= bond.name %></td>
+        <td><%= bond.bond_type %></td>
+        <td><%= bond.term %></td>
+        <td><%= bond.yield %></td>
+        <td><%= bond.benchmark_bond.name if bond.is_corporate? %></td>
+        <td><%= bond.spread_to_benchmark  if bond.is_corporate? %></td>
+        <td><%= bond.gov_bond_curve if bond.is_corporate? %></td>
+        <td><%= link_to 'Show', bond %></td>
+        <td><%= link_to 'Edit', edit_bond_path(bond) %></td>
+        <td><%= link_to 'Destroy', bond, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bond', new_bond_path %>
